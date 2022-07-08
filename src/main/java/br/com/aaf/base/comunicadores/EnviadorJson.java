@@ -119,6 +119,54 @@ public class EnviadorJson {
 
 		return "";
 	}
+	
+	public static String get2(String endpoint, String token, List<Parametro> parametros) {
+		try {
+			mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+			IntegradorRest.aceptallSSL();
+
+			CloseableHttpClient httpclient = IntegradorRest.getHttpCliente();
+		//	ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+			for (Parametro param : parametros) {
+				if(endpoint.contains("?")){
+					endpoint += "&";
+				}else{
+					endpoint += "?";
+				}
+				endpoint += param.getName();
+				endpoint += "=";
+				endpoint += param.getValue();
+				// postParameters.add(new BasicNameValuePair(param.getName(),
+				// param.getValue()));
+			}
+
+			URIBuilder uriBuilder = new URIBuilder(endpoint);
+		//	uriBuilder.addParameters(postParameters);
+
+			HttpGet httpget = new HttpGet(uriBuilder.build());
+	//		httpget.setHeader("Content-Type", "application/json");
+	//		httpget.setHeader("Authorization", token);
+
+			CloseableHttpResponse response = httpclient.execute(httpget);
+
+			System.out.println(response.getStatusLine().getStatusCode());
+			if(response.getStatusLine().getStatusCode() == 200){
+				String jsonRetorno = EntityUtils.toString(response.getEntity(), "UTF-8");
+				return jsonRetorno;
+			}else{
+				return "";	
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "";
+	}
 
 	public static void main(String[] args) {
 		MensagensWatiUtilitario enviador = new MensagensWatiUtilitario();

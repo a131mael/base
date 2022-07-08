@@ -19,4 +19,5 @@ br\com\aaf\base\whats\model\RetornoMensagemWhatsappWatiMensagensList.class
 br\com\aaf\base\whats\model\MensagemWhatsapp.class
 br\com\aaf\base\whats\model\RetornoMensagemWhatsappWati.class
 br\com\aaf\base\util\Util.class
+br\com\aaf\base\base\ConstantesEscolaApi.class
 br\com\aaf\base\comunicadores\IntegradorRest$1.class
