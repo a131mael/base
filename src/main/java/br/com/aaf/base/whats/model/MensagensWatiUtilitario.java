@@ -47,17 +47,17 @@ public class MensagensWatiUtilitario {
 				List<MensagemWhatsapp> mensagens = Arrays.asList(retorno.getMessages().get(0).getItems());
 				Collections.sort(mensagens, Comparator.comparing(MensagemWhatsapp::getCreated));
 
-				boolean atual = true;
 				for (MensagemWhatsapp mensagem : mensagens) {
 					
-					mensagem.setPrimeiro(atual);
-					
-					if (atual != mensagem.isOwner()) {
-						System.out.println("-----------------");
+					if (mensagem.isOwner()) {
+						mensagem.setPrimeiro(true);
 					}
-					atual = mensagem.isOwner();
+					if ("ticket".equalsIgnoreCase(mensagem.getEventType())) {
+						mensagem.setPrimeiro(true);
+					}
+					
 					if ("broadcastMessage".equalsIgnoreCase(mensagem.getEventType())) {
-						System.out.println(mensagem.getFinalText());
+						mensagem.setPrimeiro(true);
 					} else if (!"ticket".equalsIgnoreCase(mensagem.getEventType())) {
 						System.out.println(mensagem.getText());
 					}

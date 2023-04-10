@@ -69,16 +69,12 @@ public enum ExtratoTiposEntradaEnum {
 	DINHEIRO("Dinheiro","Dinheiro");
 	
 	
-	
-	
-	
 	private String nameExtrato;
 	private String nameReal;
 	
 	ExtratoTiposEntradaEnum(String name, String nomeReal){
 		this.setNameExtrato(name);
 		this.setNameReal(nomeReal);
-		
 	}
 
 	public String getNameExtrato() {

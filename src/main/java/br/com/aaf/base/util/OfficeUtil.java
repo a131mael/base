@@ -14,6 +14,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -134,6 +135,26 @@ public class OfficeUtil {
 		}
 	}
 
+	public static String dataFormatadaBanco(Date data) {
+		if (data != null) {
+			final DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			return df.format(data);
+		} else {
+			return null;
+		}
+
+	}
+
+	public static String dataFormatadaBanco(int dia, int mes, int ano) {
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.DAY_OF_MONTH, dia);
+		c.set(Calendar.MONTH, mes -1);
+		c.set(Calendar.YEAR, ano);
+		final DateFormat df = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
+		return df.format(c.getTime());
+
+	}
+
 	public static String retornaHoraSomenteNumeros(Date data) {
 
 		final DateFormat df = new SimpleDateFormat("hhmmss");
@@ -184,7 +205,7 @@ public class OfficeUtil {
 	}
 
 	public static String getValor(String linha, int inicio, int fim) {
-		if(linha != null){
+		if (linha != null) {
 			return linha.substring(inicio - 1, fim);
 		}
 		return "";

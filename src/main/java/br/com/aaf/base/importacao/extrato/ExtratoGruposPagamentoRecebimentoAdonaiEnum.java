@@ -28,7 +28,6 @@ public enum ExtratoGruposPagamentoRecebimentoAdonaiEnum {
 	
 	ExtratoGruposPagamentoRecebimentoAdonaiEnum(String name){
 		this.setNome(name);
-		
 	}
 
 	public String getNome() {
