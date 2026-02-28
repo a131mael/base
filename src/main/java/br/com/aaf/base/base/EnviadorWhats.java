@@ -61,9 +61,10 @@ public class EnviadorWhats {
 			System.out.println(jsonRetorno);
 			RetornoEnvioWhats retorno = mapper.readValue(jsonRetorno, RetornoEnvioWhats.class);
 
-			if (!retorno.isValidWhatsAppNumber()) {
-				return retorno.isValidWhatsAppNumber();
-			}
+			//TODO verificar porqu retorna muitas vezes false na verificacao se o numero é um numero de whats valido, mas mesmo assim envia a mensagem
+//			if (!retorno.isValidWhatsAppNumber()) {
+//				return retorno.isValidWhatsAppNumber();
+//			}
 
 			if (response.getStatusLine().getStatusCode() >= 200 && response.getStatusLine().getStatusCode() < 300) {
 				return true;

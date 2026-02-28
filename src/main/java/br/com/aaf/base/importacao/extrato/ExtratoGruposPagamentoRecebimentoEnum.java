@@ -17,7 +17,7 @@ public enum ExtratoGruposPagamentoRecebimentoEnum {
 	TARIFA_GERAL("Imposto e taxas"),
 	ENTRADA_BOLETO("Boleto Recebido"),
 	ENTRADA_PIX("Pix Recebido"),
-	ENTRADA_FRETE("Entrada Frete"),
+	ENTRADA_FRETE("Frete"),
 	ENTRADA_ACORDO_DIVIDA("Acordo Divida"),
 	OUTROS("Outro");
 	

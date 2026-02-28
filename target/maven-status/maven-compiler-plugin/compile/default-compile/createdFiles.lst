@@ -1,10 +1,12 @@
 br\com\aaf\base\util\OfficeUtil.class
 br\com\aaf\base\email\TesteEnvioEmail$1.class
+br\com\aaf\base\util\ParametroList.class
 br\com\aaf\base\constantes\ConstantesEXTRATO.class
 br\com\aaf\base\whats\model\MensagensWatiUtilitario.class
 br\com\aaf\base\util\CompactadorZip.class
 br\com\aaf\base\base\EnviadorWhats.class
 br\com\aaf\base\base\RetornoEnvioWhats.class
+br\com\aaf\base\importacao\extrato\ExtratoGruposPagamentoRecebimentoFidenattoEnum.class
 br\com\aaf\base\whats\model\MensagemWhatsapp.class
 br\com\aaf\base\whats\model\RetornoMensagemWhatsappWati.class
 br\com\aaf\base\comunicadores\IntegradorRest$1.class
