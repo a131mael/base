@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.aaf.base.whats.model.Parametro;
 
-@JsonIgnoreProperties
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RetornoEnvioWhats implements Serializable {
 
 	/**
