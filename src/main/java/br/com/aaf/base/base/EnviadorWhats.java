@@ -61,10 +61,15 @@ public class EnviadorWhats {
 			System.out.println(jsonRetorno);
 			RetornoEnvioWhats retorno = mapper.readValue(jsonRetorno, RetornoEnvioWhats.class);
 
-			//TODO verificar porqu retorna muitas vezes false na verificacao se o numero é um numero de whats valido, mas mesmo assim envia a mensagem
-//			if (!retorno.isValidWhatsAppNumber()) {
-//				return retorno.isValidWhatsAppNumber();
-//			}
+			// Wati às vezes retorna validWhatsAppNumber=false mesmo quando a mensagem chega de
+			// verdade (falso negativo já observado antes) — por isso NÃO bloqueia o envio nem
+			// marca como falha, só avisa pra checagem manual. Ver conversa 10/ago/2026: achado
+			// real em produção, telefone "5548996819108" (contato UNCONFIRMED no Wati) marcado
+			// como enviado com sucesso mesmo com validWhatsAppNumber=false.
+			if (!retorno.isValidWhatsAppNumber()) {
+				System.out.println("⚠️ AVISO: Wati retornou validWhatsAppNumber=false para " + telefone
+						+ " — mensagem foi marcada como enviada, mas confira manualmente se chegou.");
+			}
 
 			if (response.getStatusLine().getStatusCode() >= 200 && response.getStatusLine().getStatusCode() < 300) {
 				return true;
